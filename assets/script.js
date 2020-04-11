@@ -6,6 +6,7 @@
     var currentTime = moment().format("HH")
     console.log(currentTime)
 
+// Changing the color of the time blocks
     for(i=9;i<=17;i++){
         var selectorString = "#" + [i]
         console.log(selectorString)
@@ -20,17 +21,12 @@
             $(selectorString).removeClass("future")
             $(selectorString).addClass("present");
         }  
+        $("button").on("click", function(){
+            var task = $(this).siblings(".taskDiv").val()
+            var time = $(this).siblings("textarea").attr("id")
+            console.log(time, task)
+
+            localStorage.setItem(time, task);  
+        });
+        $(selectorString).text(localStorage.getItem(i));
     }
-    // if("21:00" < currentTime){
-    //     $("#15").removeClass("future")
-    //     $("#15").removeClass("present")
-    //     $("#15").addClass("past");
-    //     console.log(false);
-    // }
-    // if(currentTime >= "22:00" && currentTime < "23:00"){
-    //     $("#16").addClass("present");
-    // }  
-    // if("24:00" < currentTime){
-    //     $("17").addClass("future");
-    //     console.log(false);
-    // }
